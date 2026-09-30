@@ -473,7 +473,7 @@
         : activeFilter === "active"
           ? "目前沒有未完成的事項。"
           : activeFilter === "completed"
-            ? "目前沒有已完成的事項。"
+            ? "目前沒有已完成的事項，取消完成的項目仍在清單中；切回「全部」即可查看。"
             : "還沒有任何待辦事項，新增一個吧!";
       emptyState.hidden = visibleTodos.length > 0;
     }
