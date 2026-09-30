@@ -8,10 +8,55 @@
   --color-accent-dark: #246351;
   --color-accent-soft: #e3f0eb;
   --color-danger: #b55454;
+  --color-danger-soft: #f8eaea;
+  --color-control-surface: #f8faf9;
+  --color-card-border: rgba(255, 255, 255, 0.8);
   --shadow-card: 0 20px 55px rgba(35, 65, 56, 0.12);
   --shadow-button: 0 8px 18px rgba(47, 125, 104, 0.2);
   --radius-card: 22px;
   --radius-control: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --color-background: #17211e;
+    --color-surface: #222f2a;
+    --color-ink: #e5eee9;
+    --color-muted: #a1b1aa;
+    --color-border: #3b4a44;
+    --color-accent: #71b59d;
+    --color-accent-dark: #8bcab1;
+    --color-accent-soft: #304a40;
+    --color-danger: #e39a9a;
+    --color-danger-soft: #493333;
+    --color-control-surface: #1c2924;
+    --color-card-border: #3b4a44;
+    --shadow-card: 0 20px 55px rgba(0, 0, 0, 0.28);
+    --shadow-button: 0 8px 18px rgba(0, 0, 0, 0.22);
+  }
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-background: #17211e;
+  --color-surface: #222f2a;
+  --color-ink: #e5eee9;
+  --color-muted: #a1b1aa;
+  --color-border: #3b4a44;
+  --color-accent: #71b59d;
+  --color-accent-dark: #8bcab1;
+  --color-accent-soft: #304a40;
+  --color-danger: #e39a9a;
+  --color-danger-soft: #493333;
+  --color-control-surface: #1c2924;
+  --color-card-border: #3b4a44;
+  --shadow-card: 0 20px 55px rgba(0, 0, 0, 0.28);
+  --shadow-button: 0 8px 18px rgba(0, 0, 0, 0.22);
 }
 
 * {
@@ -41,13 +86,20 @@ button {
   margin: 0 auto;
   padding: 38px clamp(22px, 6vw, 42px) 24px;
   background: var(--color-surface);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--color-card-border);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
 }
 
 .app-header {
   margin-bottom: 28px;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 
 .eyebrow {
@@ -70,6 +122,19 @@ h1 {
   line-height: 1.15;
 }
 
+.theme-toggle {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  color: var(--color-ink);
+  background: var(--color-control-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  font-size: 0.82rem;
+}
+
 .subtitle {
   margin-bottom: 0;
   color: var(--color-muted);
@@ -79,7 +144,7 @@ h1 {
 .todo-form {
   display: flex;
   gap: 10px;
-  margin-bottom: 32px;
+  margin-bottom: 12px;
 }
 
 .todo-form input {
@@ -87,7 +152,7 @@ h1 {
   flex: 1;
   padding: 13px 15px;
   color: var(--color-ink);
-  background: #f8faf9;
+  background: var(--color-control-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-control);
   outline: none;
@@ -114,6 +179,28 @@ h1 {
 .todo-form button:hover {
   background: var(--color-accent-dark);
   transform: translateY(-1px);
+}
+
+.todo-filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 30px;
+}
+
+.filter-button {
+  padding: 8px 13px;
+  color: var(--color-muted);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+.filter-button.active {
+  color: #fff;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
 }
 
 .section-heading {
@@ -154,7 +241,7 @@ h1 {
   gap: 12px;
   min-height: 54px;
   padding: 8px 10px 8px 14px;
-  background: #f8faf9;
+  background: var(--color-control-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-control);
   animation: item-enter 220ms ease-out both;
@@ -192,7 +279,7 @@ h1 {
 
 .delete-button:hover,
 .delete-button:focus-visible {
-  background: #f8eaea;
+  background: var(--color-danger-soft);
 }
 
 .empty-state {
@@ -246,5 +333,10 @@ h1 {
 
   .todo-form button {
     padding: 0 15px;
+  }
+
+  .theme-toggle {
+    padding: 7px 8px;
+    font-size: 0.76rem;
   }
 }
