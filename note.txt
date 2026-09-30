@@ -1,0 +1,8 @@
+https://github.com/climbingg/my1stCopilotWorkshop
+git clone https://github.com/climbingg/my1stCopilotWorkshop
+
+git status
+git add .
+git commit -m "step 1: 用 Agent Mode 建立待辦清單 App"
+git pull --rebase
+git push
